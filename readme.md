@@ -5,7 +5,7 @@ Simple App which displays a question, "What is the capital of Brazil", and allow
 
 ### App Walk-though
 
-<img src="YOUR_GIF_URL_HERE" width=200><br>
+<img src="https://media.giphy.com/media/443k62691CJYkTb6cs/giphy.gif" width=200><br>
 
 
 ## Required
