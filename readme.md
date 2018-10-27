@@ -1,5 +1,26 @@
 ## Flashcard App
 
+## Lab 2
+
+### App Description
+Simple flashcard app that first displays "What is the Capital of Brazil?" with the answer, but provides user with opportunity to change the flashcard.
+
+### App Walk-through
+
+<img src="https://media.giphy.com/media/1k4THniK3L5mDMh6Qr/giphy.gif" width=200><br>
+
+## Required
+- [x] User can open the creation screen
+- [x] User can cancel out of the creation screen
+- [x] User can enter a new question and answer in the creation screen to then show it on the flashcard
+- [x] Push code to GitHub
+## Optional
+- [ ] User gets an error if they try to create a new flashcard with no question or answer
+- [ ] User can edit existing flashcard
+- [ ] User can add multiple choice answers in the creation screen
+
+## Lab 1
+
 ### App Description
 Simple App which displays a question, "What is the capital of Brazil", and allows the user to tap to see the answer.
 
