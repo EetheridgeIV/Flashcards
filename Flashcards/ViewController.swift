@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         readSavedFlashcards()
         
         //Adding our initial flashcard if needed
-        if currentIndex == 0 {
+        if flashcards.count == 0 {
             updateFlashcard(question: "What's the capital of Brazil?", answer: "Brasilia")
         } else {
             updateLabels()
