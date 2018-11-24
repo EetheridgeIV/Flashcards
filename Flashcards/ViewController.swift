@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
+    @IBOutlet weak var card: UIView!
+    
     
     //Array to hold our flashcards
     var flashcards = [Flashcard]()
@@ -44,7 +46,55 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapOnFlashcard(_ sender: Any) {
-        frontLabel.isHidden = true;
+        flipFlashcard()
+    }
+    
+    func flipFlashcard() {
+        UIView.transition(with: card, duration: 0.3, options: .transitionFlipFromRight, animations: {
+            self.frontLabel.isHidden = true;
+        })
+    }
+    
+    func animateCardOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.card.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)
+        }, completion: { finished in
+            
+            //Update labels
+            self.updateLabels()
+            
+            //Run other animation
+            self.animateCardIn()
+        })
+    }
+    
+    func animateCardIn() {
+        //Start on the right side without animation
+        self.card.transform = CGAffineTransform.identity.translatedBy(x: 300.0, y: 0.0)
+        UIView.animate(withDuration: 0.3) {
+            self.card.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func prevAnimateCardOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.card.transform = CGAffineTransform.identity.translatedBy(x: 300.0, y: 0.0)
+        }, completion: { finished in
+            
+            //Update labels
+            self.updateLabels()
+            
+            //Run other animation
+            self.prevAnimateCardIn()
+        })
+    }
+    
+    func prevAnimateCardIn() {
+        //Start on the left side without animation
+        self.card.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)
+        UIView.animate(withDuration: 0.3) {
+            self.card.transform = CGAffineTransform.identity
+        }
     }
     
     func updateNextPrevButtons(){
@@ -93,11 +143,10 @@ class ViewController: UIViewController {
         //Increase current index
         currentIndex = currentIndex + 1
         
-        //Update labels
-        updateLabels()
-        
         //Update Buttons
         updateNextPrevButtons()
+        
+        animateCardOut()
     }
     
     @IBAction func didTapOnPrev(_ sender: Any) {
@@ -105,11 +154,10 @@ class ViewController: UIViewController {
         //Decrease current index
         currentIndex = currentIndex - 1
         
-        //Update labels
-        updateLabels()
-        
         //Update Buttons
         updateNextPrevButtons()
+        
+        prevAnimateCardOut()
     }
     
     func updateLabels() {
